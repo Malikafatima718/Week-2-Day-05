@@ -1,0 +1,70 @@
+# Week-2-Day-05
+Expectation Handling
+# Program: Basic Try-Except Example
+def divide_numbers():
+    try:
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+        result = num1 / num2
+        print("Result:", result)
+    except Exception as e:
+        print("Error occurred:", e)
+
+if __name__ == "__main__":
+    divide_numbers()
+    
+  # Program: Handle Division by Zero
+def safe_division():
+    try:
+        numerator = float(input("Enter numerator: "))
+        denominator = float(input("Enter denominator: "))
+        result = numerator / denominator
+        print("Division Result:", result)
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero.")
+    except ValueError:
+        print("Error: Invalid input. Please enter numeric values.")
+    finally:
+        print("Execution completed.")
+
+   # Program: Handle File Not Found and File Errors
+def read_file():
+    try:
+        file_name = input("Enter file name to read: ")
+        with open(file_name, "r") as file:
+            content = file.read()
+            print("File Content:\n", content)
+    except FileNotFoundError:
+        print("Error: File not found.")
+    except PermissionError:
+        print("Error: Permission denied.")
+    except IOError:
+        print("Error: Input/Output error occurred.")
+    finally:
+        print("File operation completed.")
+
+if __name__ == "__main__":
+    read_file()
+
+# Program: Custom Exception Example
+class NegativeNumberError(Exception):
+    """Custom exception for negative numbers."""
+    pass
+
+def check_positive_number():
+    try:
+        number = float(input("Enter a positive number: "))
+        if number < 0:
+            raise NegativeNumberError("Negative numbers are not allowed.")
+        print("Valid number:", number)
+    except NegativeNumberError as ne:
+        print("Custom Error:", ne)
+    except ValueError:
+        print("Error: Please enter a valid numeric value.")
+    finally:
+        print("Validation completed.")
+
+if __name__ == "__main__":
+    check_positive_number()
+
+
